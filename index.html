@@ -3,83 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Masaru - GitHub Pages</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .container {
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-            padding: 40px;
-            max-width: 600px;
-            text-align: center;
-        }
-        h1 {
-            color: #333;
-            margin-bottom: 20px;
-            font-size: 2.5em;
-        }
-        p {
-            color: #666;
-            font-size: 1.1em;
-            margin-bottom: 30px;
-            line-height: 1.6;
-        }
-        .links {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        .btn {
-            padding: 12px 24px;
-            border: none;
-            border-radius: 5px;
-            font-size: 1em;
-            cursor: pointer;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
-        .btn-primary {
-            background-color: #667eea;
-            color: white;
-        }
-        .btn-primary:hover {
-            background-color: #764ba2;
-            transform: translateY(-2px);
-        }
-        .btn-secondary {
-            background-color: #f0f0f0;
-            color: #333;
-            border: 2px solid #667eea;
-        }
-        .btn-secondary:hover {
-            background-color: #e8e8e8;
-            transform: translateY(-2px);
-        }
-    </style>
+    <title>ウリの紹介</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>🎉 Masaru</h1>
-        <p>GitHub Pagesへようこそ！<br>このページはHTMLで表示されています。</p>
-        <div class="links">
-            <a href="https://github.com/yabuzukin0212-cpu/Masaru" class="btn btn-primary">GitHubリポジトリ</a>
-            <a href="https://github.com/yabuzukin0212-cpu" class="btn btn-secondary">プロフィール</a>
-        </div>
+        <header>
+            <h1>🐰 ウリの紹介 🐰</h1>
+            <p class="subtitle">かわいいウサギのウリについて</p>
+        </header>
+
+        <main>
+            <!-- ペット画像セクション -->
+            <section class="pet-image-section">
+                <div class="image-placeholder">
+                    <img id="petImage" src="images/uri.jpg" alt="ウリの写真">
+                    <p class="image-note">※後で画像を入れてください</p>
+                </div>
+            </section>
+
+            <!-- 基本情報セクション -->
+            <section class="info-section">
+                <h2>基本情報</h2>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <span class="label">名前</span>
+                        <span class="value" id="petName">ウリ</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">種類</span>
+                        <span class="value" id="petType">ウサギ</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">性別</span>
+                        <span class="value" id="petGender">女の子</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">年齢</span>
+                        <span class="value" id="petAge">3歳</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 性格紹介セクション -->
+            <section class="personality-section">
+                <h2>性格</h2>
+                <p id="petPersonality">
+                    ウリは元気いっぱいで好奇心旺盛な子です。毎日ピョンピョン跳ねて遊んでいます。
+                </p>
+            </section>
+
+            <!-- 好きな食べ物セクション -->
+            <section class="favorite-section">
+                <h2>好きな食べ物</h2>
+                <ul id="favoriteFood">
+                    <li>にんじん</li>
+                    <li>小松菜</li>
+                    <li>牧草</li>
+                    <li>ペレット</li>
+                </ul>
+            </section>
+
+            <!-- 特技・特徴セクション -->
+            <section class="special-section">
+                <h2>特技・特徴</h2>
+                <ul id="specialFeatures">
+                    <li>素早いジャンプ</li>
+                    <li>かわいいリップノーズ</li>
+                    <li>ふわふわの毛並み</li>
+                    <li>甘えん坊</li>
+                </ul>
+            </section>
+
+            <!-- ギャラリーセクション（複数写真用） -->
+            <section class="gallery-section">
+                <h2>ウリのギャラリー</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="images/uri-1.jpg" alt="ウリの写真1">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/uri-2.jpg" alt="ウリの写真2">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/uri-3.jpg" alt="ウリの写真3">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/uri-4.jpg" alt="ウリの写真4">
+                    </div>
+                </div>
+                <p class="gallery-note">※ギャラリーに写真を追加してください</p>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 ウリの紹介ページ</p>
+        </footer>
     </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
