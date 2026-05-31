@@ -8,6 +8,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 初期データの設定（必要に応じて変更してください）
     setupPetData();
+    
+    // ウリを走り回らせる
+    startWalkingUri();
 });
 
 // ペットデータの設定
@@ -112,6 +115,94 @@ function addGalleryImages(imageArray) {
 }
 
 // ================================================================
+// ウリを走り回らせるアニメーション機能
+// ================================================================
+
+let walkingUri = null;
+let isWalking = false;
+
+// ウリを走り回らせる関数
+function startWalkingUri() {
+    // 走り回るウリの要素を作成
+    const uri = document.createElement('div');
+    uri.id = 'walking-uri';
+    uri.className = 'walking-uri-container';
+    
+    const img = document.createElement('img');
+    img.src = 'images/IMG_2961.jpeg';
+    img.alt = 'ウリ';
+    img.className = 'walking-uri-image';
+    
+    uri.appendChild(img);
+    document.body.appendChild(uri);
+    
+    walkingUri = uri;
+    isWalking = true;
+    
+    // ウリを移動させる
+    moveUri();
+}
+
+// ウリを移動させる関数
+function moveUri() {
+    if (!isWalking || !walkingUri) return;
+    
+    // ランダムな位置を計算
+    const screenWidth = window.innerWidth;
+    const screenHeight = window.innerHeight;
+    
+    const x = Math.random() * (screenWidth - 80);
+    const y = Math.random() * (screenHeight - 80);
+    
+    // ウリが向く方向を計算
+    const rotation = Math.atan2(y - parseFloat(walkingUri.style.top || 0), x - parseFloat(walkingUri.style.left || 0)) * (180 / Math.PI);
+    
+    // ウリのデータを更新
+    const dataset = walkingUri.dataset;
+    const prevX = parseFloat(dataset.x || 0);
+    const prevY = parseFloat(dataset.y || 0);
+    
+    dataset.x = x;
+    dataset.y = y;
+    
+    // 移動方向に応じて反転
+    if (x < prevX) {
+        walkingUri.style.transform = 'scaleX(-1)';
+    } else {
+        walkingUri.style.transform = 'scaleX(1)';
+    }
+    
+    // ウリの位置を更新（滑らかなアニメーション）
+    walkingUri.style.transition = 'all 2s ease-in-out';
+    walkingUri.style.left = x + 'px';
+    walkingUri.style.top = y + 'px';
+    
+    // 次の移動を予約（2秒後）
+    setTimeout(moveUri, 2500);
+}
+
+// ウリを止める関数
+function stopWalkingUri() {
+    isWalking = false;
+    if (walkingUri) {
+        walkingUri.style.animation = 'fadeOut 0.5s ease-out forwards';
+        setTimeout(() => {
+            if (walkingUri && walkingUri.parentNode) {
+                walkingUri.parentNode.removeChild(walkingUri);
+            }
+            walkingUri = null;
+        }, 500);
+    }
+}
+
+// ウリを再開する関数
+function resumeWalkingUri() {
+    if (!isWalking) {
+        startWalkingUri();
+    }
+}
+
+// ================================================================
 // 使用例:
 // ================================================================
 // ペット情報を全て変更する場合:
@@ -136,3 +227,9 @@ function addGalleryImages(imageArray) {
 //     { path: 'images/uri-5.jpg', alt: 'ウリの写真5' },
 //     { path: 'images/uri-6.jpg', alt: 'ウリの写真6' }
 // ]);
+//
+// ウリが走り回るのを止める場合:
+// stopWalkingUri();
+//
+// ウリが走り回るのを再開する場合:
+// resumeWalkingUri();
